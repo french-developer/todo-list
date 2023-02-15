@@ -1,15 +1,17 @@
 <script lang="ts" setup>
 import TodoAdd from './components/TodoAdd.vue';
+import TodoFilter from './components/TodoFilter.vue';
 import TodoList from './components/TodoList.vue';
 import useTodos from './composables/useTodos';
 
-const { todos, addTodo, deleteTodoById } = useTodos();
+const { filter, filteredTodos, addTodo, deleteTodoById } = useTodos();
 </script>
 
 <template>
   <div class="container">
     <TodoAdd @add-todo="addTodo" />
-    <TodoList :todos="todos" @delete-todo-by-id="deleteTodoById" />
+    <TodoFilter v-model="filter" />
+    <TodoList :todos="filteredTodos" @delete-todo-by-id="deleteTodoById" />
   </div>
 </template>
 

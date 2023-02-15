@@ -1,6 +1,7 @@
 import { v4 } from 'uuid';
+import { computed } from 'vue';
 import { useLocalStorage } from '@vueuse/core';
-import { ITodo } from '@/types/todos';
+import { ITodo, Filter } from '@/types/todos';
 
 export default function useTodos() {
   const DEFAULT_TODOS: ITodo[] = [
@@ -10,7 +11,19 @@ export default function useTodos() {
     { id: v4(), value: 'Update PowerPoint Slides', isComplete: false },
   ];
 
+  const filter = useLocalStorage<Filter>('filter', 'all');
   const todos = useLocalStorage<ITodo[]>('todos', DEFAULT_TODOS);
+
+  const filteredTodos = computed<ITodo[]>(() => {
+    switch(filter.value) {
+      case 'complete':
+        return todos.value.filter((todo) => todo.isComplete);
+      case 'incomplete':
+        return todos.value.filter((todo) => !todo.isComplete);
+      default:
+        return todos.value;
+    }
+  });
 
   function addTodo(value: string): void {
     const newTodo: ITodo = {
@@ -29,7 +42,8 @@ export default function useTodos() {
   }
 
   return {
-    todos,
+    filter,
+    filteredTodos,
     addTodo,
     deleteTodoById,
   };

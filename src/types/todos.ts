@@ -3,3 +3,5 @@ export interface ITodo {
   value: string;
   isComplete: boolean;
 }
+
+export type Filter = 'all' | 'complete' | 'incomplete';
