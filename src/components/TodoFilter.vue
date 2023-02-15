@@ -47,12 +47,12 @@ const filterBtns: IFilterBtn[] = [
   padding: 12px 0;
   background-color: transparent;
   border: none;
+  border-bottom: 2px solid #fff;
   flex-grow: 1;
-  cursor: pointer;
 }
 
 .todo-filter-btn.is-selected {
-  border-bottom: 2px solid #000;
+  border-color: #000;
   font-weight: 500;
 }
 </style>

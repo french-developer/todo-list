@@ -5,7 +5,7 @@ import { ITodo, Filter } from '@/types/todos';
 
 export default function useTodos() {
   const DEFAULT_TODOS: ITodo[] = [
-    { id: v4(), value: 'Drink water', isComplete: false },
+    { id: v4(), value: 'Drink water', isComplete: true },
     { id: v4(), value: 'Fix the broken computer', isComplete: false },
     { id: v4(), value: 'Clean the house', isComplete: false },
     { id: v4(), value: 'Update PowerPoint Slides', isComplete: false },
@@ -20,7 +20,7 @@ export default function useTodos() {
         return todos.value.filter((todo) => todo.isComplete);
       case 'incomplete':
         return todos.value.filter((todo) => !todo.isComplete);
-      default:
+    default:
         return todos.value;
     }
   });

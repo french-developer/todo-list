@@ -39,6 +39,5 @@ const emit = defineEmits<{
   background-color: transparent;
   border: none;
   font-weight: 500;
-  cursor: pointer;
 }
 </style>

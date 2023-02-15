@@ -46,7 +46,6 @@ function addTodo(): void {
   background-color: #000;
   font-weight: 500;
   color: #fff;
-  cursor: pointer;
 }
 
 @media screen and (min-width: 480px) {
